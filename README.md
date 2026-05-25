@@ -122,6 +122,33 @@ This repo exists so MCP directories that require a GitHub URL can link to a
 stable public source of documentation and metadata without requiring Bridge Town
 to open source its commercial server.
 
+## Local Stdio Shim
+
+Most hosted clients should connect directly to the Streamable HTTP endpoint.
+For registries or local MCP hosts that require a stdio binary, this repository
+also provides a minimal shim:
+
+```bash
+BRIDGE_TOWN_API_TOKEN=btk_YOUR_TOKEN npx github:Bridge-Town/financial-modeling-mcp
+```
+
+The shim exposes `bridge-town-mcp` over stdio and forwards MCP JSON-RPC messages
+to:
+
+```text
+https://api.bridgetown.builders/mcp
+```
+
+Configuration:
+
+| Variable | Required | Description |
+| --- | --- | --- |
+| `BRIDGE_TOWN_API_TOKEN` | yes | Bridge Town API token from <https://app.bridgetown.builders/connect> |
+| `BRIDGE_TOWN_MCP_URL` | no | Override the hosted MCP URL, mainly for local development |
+
+The shim does not read or write local files and does not spawn child processes.
+It only makes HTTPS requests to the Bridge Town MCP API.
+
 ## Security
 
 Bridge Town is tenant-isolated, OAuth-backed, and designed for financial data.
@@ -132,4 +159,3 @@ Bridge Town.
 
 Report security issues privately. Do not open public GitHub issues for
 vulnerabilities. See [SECURITY.md](SECURITY.md).
-

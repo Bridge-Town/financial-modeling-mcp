@@ -1,0 +1,25 @@
+{
+  "name": "@bridge-town/financial-modeling-mcp",
+  "version": "1.0.1",
+  "description": "Public docs, registry metadata, and stdio shim for the Bridge Town hosted MCP connector.",
+  "type": "module",
+  "bin": {
+    "bridge-town-mcp": "./bin/bridge-town-mcp.js"
+  },
+  "files": [
+    "README.md",
+    "SECURITY.md",
+    "server.json",
+    "docs/",
+    "bin/"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "homepage": "https://bridgetown.builders",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bridge-Town/financial-modeling-mcp.git"
+  }
+}
