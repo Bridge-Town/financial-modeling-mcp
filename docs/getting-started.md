@@ -1,79 +1,28 @@
 # Getting Started with Bridge Town MCP
 
-Bridge Town exposes one hosted MCP endpoint:
+Bridge Town exposes one hosted MCP Streamable HTTP endpoint:
 
 ```text
 https://api.bridgetown.builders/mcp
 ```
 
-Use this endpoint from Claude.ai, Claude Code, Claude Desktop, Codex, OpenCode,
-Cursor, Smithery, Glama, mcp.so, or any MCP-compatible client that supports
-Streamable HTTP.
+Bridge Town does not expose an SSE-only transport. A client limited to
+spawn-based MCP configuration can connect through `mcp-remote`.
 
-## Connection Profile
+## 1. Create an account
 
-| Field | Value |
-| --- | --- |
-| Transport | MCP Streamable HTTP |
-| Cloud URL | `https://api.bridgetown.builders/mcp` |
-| Local dev URL | `http://localhost:8000/mcp` |
-| OAuth discovery | `https://api.bridgetown.builders/.well-known/oauth-authorization-server` |
-| Health endpoint | `https://api.bridgetown.builders/health` |
-| Health resource | `health://status` |
+Sign in at <https://app.bridgetown.builders>, then open **Models**. A model is a
+git-versioned repository containing Python model files, data snapshots, Native
+Sheets, and reusable `lib/` code.
 
-Bridge Town does not expose an SSE-only transport. Clients that only support
-legacy spawn-based MCP configuration can connect through `mcp-remote`.
+## 2. Connect a client
 
-## 1. Create a Bridge Town Account
+For Claude.ai, add `https://api.bridgetown.builders/mcp` as a custom connector,
+name it **Bridge Town**, and approve OAuth.
 
-Sign up at:
-
-```text
-https://app.bridgetown.builders
-```
-
-Then open **Models** to view or create projects. A project is a versioned
-workspace that holds model code, data sources, run outputs, dashboards, and
-collaboration state.
-
-## 2. Connect Claude.ai
-
-Claude.ai is the recommended first path because it uses OAuth and does not
-require an API token.
-
-1. Open Claude.ai.
-2. Click **Customize**.
-3. Click **+** and choose **Add custom connector**.
-4. Paste:
-
-   ```text
-   https://api.bridgetown.builders/mcp
-   ```
-
-5. Set the name to **Bridge Town**.
-6. Click **Connect**.
-7. Sign in to Bridge Town and approve the OAuth prompt.
-
-Verify the connection by asking Claude:
-
-```text
-Check if Bridge Town is connected.
-```
-
-Claude should be able to read `health://status` and show the authenticated
-workspace context.
-
-## 3. Connect Other MCP Clients
-
-For Claude Code, Claude Desktop, Codex, OpenCode, Cursor, custom agents, and
-other MCP clients, generate a token first:
-
-1. Sign in to <https://app.bridgetown.builders>.
-2. Open <https://app.bridgetown.builders/connect>.
-3. Generate an API token.
-4. Copy it immediately. Tokens start with `btk_`.
-
-### Native HTTP Configuration
+For Claude Code, Codex, Claude Desktop, Cursor, or another client that supports
+HTTP headers, generate a `btk_` token at
+<https://app.bridgetown.builders/connect> and configure:
 
 ```json
 {
@@ -91,250 +40,78 @@ other MCP clients, generate a token first:
 }
 ```
 
-### Spawn-Based Configuration with mcp-remote
+Keep tokens out of model files and conversation examples. Revoke a token from
+the same Connect page when it is no longer needed.
 
-```json
-{
-  "mcpServers": {
-    "bridge-town": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "https://api.bridgetown.builders/mcp",
-        "--header",
-        "Authorization: Bearer btk_YOUR_TOKEN"
-      ]
-    }
-  }
-}
-```
+## 3. Build and run a model
 
-### CLI Pattern
+Ask the connected client to create or select a model, write a Python file, and
+run it. The normal current flow uses:
 
-```bash
-<client> mcp add bridge-town https://api.bridgetown.builders/mcp \
-  --transport http \
-  --header "Authorization: Bearer btk_YOUR_TOKEN"
-```
+1. `list_models` or `create_model`.
+2. `commit_files` to write an atomic set of files.
+3. `run_model` to execute in the network-isolated sandbox.
+4. `get_run` for status or `get_run_output` for one named output.
 
-For Claude Code, the concrete command is:
+Use `search_tools` when you need a different goal and `get_tool` to inspect the
+selected tool's complete schema. The production catalog contains exactly 78
+tools across 18 domains.
 
-```bash
-claude mcp add bridge-town https://api.bridgetown.builders/mcp \
-  --transport http \
-  --header "Authorization: Bearer btk_YOUR_TOKEN"
-```
+## 4. Use Native Sheet inputs safely
 
-## 4. Build Your First Model
+Do not parse a committed `.btsheet.json` document directly from model code.
+Install the immutable
+[`native_sheet_reader.py` v1.0.0](../model-authoring-helpers/v1.0.0/native_sheet_reader.py)
+at `lib/native_sheet_reader.py`, verify it against
+[`SHA256SUMS`](../model-authoring-helpers/v1.0.0/SHA256SUMS), and read required
+cells with `NativeSheetReader`. The helper preserves blank, formula, and zero
+states while emitting bounded, value-free canonical read identities.
 
-Ask your agent:
+The task guide is published at
+<https://www.bridgetown.builders/docs/guides/native-sheet-model-inputs>.
 
-```text
-Create a 12-month revenue forecast model in my forecasts project. Use three
-product lines: SaaS, Services, and Marketplace. Start from January 2026.
-```
+## 5. Add output lineage
 
-The agent will typically:
+Install the immutable
+[`output_lineage.py` v1.0.0](../model-authoring-helpers/v1.0.0/output_lineage.py)
+at `lib/output_lineage.py` and verify its digest. `OutputLineageBuilder` writes
+a bounded `/outputs/output_lineage.json` graph so cell explanations can show
+recorded precedents and dependents.
 
-1. Call `create_project` if the project does not exist.
-2. Call `commit_files` or file editing tools to write Python model code.
-3. Call `run` to execute the model in Bridge Town's sandbox.
-4. Return stdout, structured outputs, files, or dashboards.
+The task guide is published at
+<https://www.bridgetown.builders/docs/guides/output-lineage-authoring>.
 
-You can then iterate naturally:
+## 6. Google Sheets
 
-```text
-Add a 10% annual growth rate to the SaaS line and rerun the model.
-```
+Connect a spreadsheet through the Bridge Town Picker flow. Google `drive.file`
+scope prevents Bridge Town from browsing files the user did not select or
+Bridge Town did not create. Use `list_data_sources` and `query_data` for
+snapshots, or the dedicated Google Sheets tools for metadata, bounded range
+reads, spreadsheet creation, row appends, and run-output publication.
 
-## 5. Google Sheets Workflows
-
-Bridge Town integrates with Google Sheets through a Picker-based flow and
-Google `drive.file` scope. Bridge Town cannot browse or access Sheets you have
-not selected through the Bridge Town app or Sheets it did not create.
-
-### Connect a Sheet
-
-1. Open <https://app.bridgetown.builders>.
-2. Open the target project.
-3. Go to **Data Sources** -> **Connect Google Sheet**.
-4. Complete the Google sign-in flow.
-5. Select a Sheet through Google Picker.
-6. Bridge Town records the Sheet as a project data source with a `source_name`.
-
-Then ask your agent to list connected sources:
-
-```text
-List the data sources in my revenue-model project.
-```
-
-### Import a Sheet Snapshot
-
-The agent can call `ingest_data_source`:
-
-```json
-{
-  "name": "ingest_data_source",
-  "arguments": {
-    "project_name": "revenue-model",
-    "spec": {
-      "kind": "google_sheet_snapshot",
-      "source_name": "revenue_model_actuals",
-      "tab_names": ["Sales", "Costs"]
-    }
-  }
-}
-```
-
-Omit `tab_names` to import all tabs. Use `query_data` to inspect the snapshot:
-
-```sql
-SELECT product_line, SUM(revenue) AS total
-FROM revenue_model_actuals_Sales
-GROUP BY product_line
-ORDER BY total DESC
-```
-
-### Write Results Back to Google Sheets
-
-Use `write_gsheet` to write model output to a connected Sheet:
-
-```json
-{
-  "name": "write_gsheet",
-  "arguments": {
-    "project_name": "revenue-model",
-    "spec": {
-      "mode": "replace",
-      "run_id": "uuid-from-run",
-      "output_name": "forecast.json",
-      "source_name": "revenue_model_actuals",
-      "cell_range": "Forecast!A1"
-    }
-  }
-}
-```
-
-Use `format_gsheet` and `modify_gsheet_structure` for finance-grade statement
-layouts, sheet structure, column widths, number formats, and visual styling.
-
-## 6. Skills and Agent Guidance
-
-Bridge Town ships bundled skill templates for common FP&A workflows. The
-canonical MCP resources are:
-
-| Resource URI | Purpose |
-| --- | --- |
-| `skills://` | Catalog of bundled skills |
-| `skill://{name}` | Full metadata and raw template body for one skill |
-
-Some hosted MCP clients cannot read MCP resources autonomously during a
-conversation. For those hosts, Bridge Town exposes `get_skill` as a compatibility
-tool that reads from the same canonical skill registry.
-
-Recommended Claude.ai flow:
-
-1. Ask naturally, for example:
-
-   ```text
-   Format my P&L Google Sheet using standard financial statement styles.
-   ```
-
-2. Claude calls `search_tools` and receives `skill_matches`.
-3. Claude calls `get_skill(name="bridge-town-gsheet-formatting",
-   include_template=true)`.
-4. Claude applies the returned guidance and calls related tools such as
-   `write_gsheet`, `format_gsheet`, and `modify_gsheet_structure`.
-
-## 7. Tool Discovery
-
-Bridge Town exposes 75 MCP tools. For clients that prefer a small initial tool
-set, load these hot tools first and defer the rest:
-
-```text
-search_tools, get_tool, list_projects, create_project, list_files, read_file,
-describe_model, commit_files, patch_file, run, get_run, list_runs,
-list_data_sources, query_data
-```
-
-When the user asks for something outside that set, call:
-
-```json
-{
-  "name": "search_tools",
-  "arguments": {
-    "query": "what the user wants to do"
-  }
-}
-```
-
-Then call `get_tool` for the selected tool schema before invoking it.
-
-## 8. Smithery
-
-Bridge Town is listed on Smithery at:
-
-```text
-https://smithery.ai/servers/bridge-town/finance
-```
-
-Connection profile:
-
-| Field | Value |
-| --- | --- |
-| Namespace | `bridge-town` |
-| Server ID | `finance` |
-| MCP endpoint | `https://api.bridgetown.builders/mcp` |
-| Transport | MCP Streamable HTTP |
-| Authentication | OAuth through Bridge Town |
-| Session parameters | None required |
-
-Do not paste Bridge Town API tokens into Smithery. Use the Bridge Town OAuth
-flow.
-
-## 9. Troubleshooting
+## Troubleshooting
 
 ### 401 Unauthorized
 
-- Token is missing, mistyped, expired, or revoked.
-- Confirm the header is exactly `Authorization: Bearer btk_...`.
-- Generate a new token at <https://app.bridgetown.builders/connect>.
+- Confirm the header is `Authorization: Bearer btk_...`.
+- Generate a new token if the original was mistyped, expired, or revoked.
+- For OAuth clients, disconnect and reconnect the connector.
 
-### Tools Not Showing Up
+### Tools are missing
 
-- Confirm the URL ends with `/mcp`.
-- Restart the client after editing config.
-- Ask the agent to call `search_tools`.
-- If using Claude.ai, disconnect and reconnect the connector.
+- Confirm the URL ends in `/mcp`.
+- Restart the client after changing configuration.
+- Call `search_tools` for the current goal.
 
-### Transport Not Supported
+### GET /mcp returns 405
 
-Bridge Town serves Streamable HTTP. If your client only supports legacy SSE or
-spawn-based configuration, use `mcp-remote`.
+This is expected for a raw browser request. MCP clients use Streamable HTTP
+POST requests. Do not add `/sse`, a provider name, or a version suffix.
 
-### GET /mcp Returns 405
+## Related links
 
-This is expected. Bridge Town's MCP endpoint is Streamable HTTP and expects MCP
-client requests to use POST. Use the URL exactly:
-
-```text
-https://api.bridgetown.builders/mcp
-```
-
-Do not add `/sse`, `/v1`, or another suffix.
-
-### Google Sheet Not Found
-
-Bridge Town uses `drive.file` scope. Complete the Picker flow in the web app
-first, then call `list_data_sources` to confirm the connected `source_name`.
-
-## Related Links
-
-- Website: <https://bridgetown.builders>
+- Website: <https://www.bridgetown.builders>
 - App: <https://app.bridgetown.builders>
-- Docs: <https://docs.bridgetown.builders>
-- Smithery listing: <https://smithery.ai/servers/bridge-town/finance>
-- Security: <https://bridgetown.builders/security>
+- Docs: <https://www.bridgetown.builders/docs/>
+- Security: <https://www.bridgetown.builders/security>
 - Support: <mailto:support@bridgetown.builders>
-
