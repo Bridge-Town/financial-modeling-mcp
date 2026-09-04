@@ -49,10 +49,9 @@ and troubleshooting.
 
 ## Canonical MCP surface
 
-The production endpoint exposes the canonical 78-tool catalog across 18
-domains. Use `search_tools` to find the correct current tool for a goal and
-`get_tool` to retrieve its full schema. The catalog does not change based on
-the client or user agent.
+The production endpoint exposes one canonical tool catalog. Use `search_tools`
+to find the correct current tool for a goal and `get_tool` to retrieve its full
+schema. The catalog does not change based on the client or user agent.
 
 The canonical registry manifest for this public listing is [server.json](server.json).
 It points to the hosted remote MCP server; it is not a copy of the proprietary
@@ -63,13 +62,13 @@ server implementation.
 Small helper modules that are intended to run inside a model repository are
 published as immutable, MIT-licensed releases:
 
-- [`native_sheet_reader.py` v1.0.0](model-authoring-helpers/v1.0.0/native_sheet_reader.py)
+- [`native_sheet_reader.py` v1.1.0](model-authoring-helpers/v1.1.0/native_sheet_reader.py)
   preserves Native Sheet missing/blank/formula states and emits bounded,
   value-free read identities.
-- [`output_lineage.py` v1.0.0](model-authoring-helpers/v1.0.0/output_lineage.py)
+- [`output_lineage.py` v1.1.0](model-authoring-helpers/v1.1.0/output_lineage.py)
   emits validated `output_lineage.json` dependency graphs.
 
-The [v1.0.0 release directory](model-authoring-helpers/v1.0.0/) includes
+The [v1.1.0 release directory](model-authoring-helpers/v1.1.0/) includes
 runnable examples, a changelog, ownership, license, manifest, and
 `SHA256SUMS`. Install a helper byte-for-byte at the manifest's `target_path`
 and verify its digest before committing it to a model repository.
@@ -95,3 +94,14 @@ selected through the Bridge Town flow or created by Bridge Town.
 
 Report vulnerabilities privately through [SECURITY.md](SECURITY.md). Do not
 open a public issue or include customer data in a report.
+
+## Governance
+
+- [Support](SUPPORT.md)
+- [Contributing and contribution boundary](CONTRIBUTING.md)
+- [Public and private source boundary](SOURCE_SCOPE.md)
+- [Ownership](OWNERS.md)
+- [MIT license](LICENSE)
+
+The governance files are generated from the closed, versioned
+[`directory-resources.v1.json`](directory-resources.v1.json) metadata contract.

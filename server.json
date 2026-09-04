@@ -2,10 +2,10 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "builders.bridgetown/bridge-town",
   "title": "Bridge Town",
-  "description": "Build financial models as code. Cloud execution, GSheets MCP, version control, collaboration.",
+  "description": "Connect your chosen AI client to build, run, review, and share version-controlled financial models.",
   "version": "1.0.1",
-  "websiteUrl": "https://bridgetown.builders",
-  "documentationUrl": "https://docs.bridgetown.builders",
+  "websiteUrl": "https://www.bridgetown.builders/",
+  "documentationUrl": "https://www.bridgetown.builders/docs/",
   "icons": [
     {
       "src": "https://app.bridgetown.builders/icon.svg",
@@ -25,11 +25,10 @@
   ],
   "_meta": {
     "io.modelcontextprotocol.registry/publisher-provided": {
-      "privacyPolicyUrl": "https://bridgetown.builders/privacy",
-      "termsOfServiceUrl": "https://bridgetown.builders/terms",
+      "privacyPolicyUrl": "https://www.bridgetown.builders/privacy",
+      "termsOfServiceUrl": "https://www.bridgetown.builders/terms",
       "supportEmail": "support@bridgetown.builders",
-      "securityContactUrl": "https://bridgetown.builders/security"
+      "securityContactUrl": "https://www.bridgetown.builders/security"
     }
   }
 }
-

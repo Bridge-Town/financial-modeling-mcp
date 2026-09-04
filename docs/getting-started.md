@@ -54,16 +54,16 @@ run it. The normal current flow uses:
 4. `get_run` for status or `get_run_output` for one named output.
 
 Use `search_tools` when you need a different goal and `get_tool` to inspect the
-selected tool's complete schema. The production catalog contains exactly 78
-tools across 18 domains.
+selected tool's complete schema. Those discovery tools are the authoritative
+way to inspect the production catalog without relying on a stale count.
 
 ## 4. Use Native Sheet inputs safely
 
 Do not parse a committed `.btsheet.json` document directly from model code.
 Install the immutable
-[`native_sheet_reader.py` v1.0.0](../model-authoring-helpers/v1.0.0/native_sheet_reader.py)
+[`native_sheet_reader.py` v1.1.0](../model-authoring-helpers/v1.1.0/native_sheet_reader.py)
 at `lib/native_sheet_reader.py`, verify it against
-[`SHA256SUMS`](../model-authoring-helpers/v1.0.0/SHA256SUMS), and read required
+[`SHA256SUMS`](../model-authoring-helpers/v1.1.0/SHA256SUMS), and read required
 cells with `NativeSheetReader`. The helper preserves blank, formula, and zero
 states while emitting bounded, value-free canonical read identities.
 
@@ -73,7 +73,7 @@ The task guide is published at
 ## 5. Add output lineage
 
 Install the immutable
-[`output_lineage.py` v1.0.0](../model-authoring-helpers/v1.0.0/output_lineage.py)
+[`output_lineage.py` v1.1.0](../model-authoring-helpers/v1.1.0/output_lineage.py)
 at `lib/output_lineage.py` and verify its digest. `OutputLineageBuilder` writes
 a bounded `/outputs/output_lineage.json` graph so cell explanations can show
 recorded precedents and dependents.

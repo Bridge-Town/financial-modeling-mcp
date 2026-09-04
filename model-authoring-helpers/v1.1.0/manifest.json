@@ -1,0 +1,49 @@
+{
+  "documentation": {
+    "native_sheet_reader": "https://www.bridgetown.builders/docs/guides/native-sheet-model-inputs",
+    "output_lineage": "https://www.bridgetown.builders/docs/guides/output-lineage-authoring"
+  },
+  "examples": [
+    {
+      "path": "examples/native_sheet_reader_example.py",
+      "sha256": "a3436fa665351b276a052d5eb93d73df13f688fab65d846be78f210645e2596f"
+    },
+    {
+      "path": "examples/output_lineage_example.py",
+      "sha256": "84655568b42a6d59cb105282ed7dfa004af429c622321687162acde9d7cb381d"
+    }
+  ],
+  "helpers": [
+    {
+      "bytes": 21105,
+      "download_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/download/model-authoring-helpers-v1.1.0/native_sheet_reader.py",
+      "filename": "native_sheet_reader.py",
+      "name": "native_sheet_reader",
+      "runtime_dependencies": [
+        "python>=3.11"
+      ],
+      "sha256": "824fa62413de6ceb804ceb15a437e51db6ab6d08b9d3e5c054fbcdb1de66a9ca",
+      "source_url": "https://raw.githubusercontent.com/Bridge-Town/financial-modeling-mcp/model-authoring-helpers-v1.1.0/model-authoring-helpers/v1.1.0/native_sheet_reader.py",
+      "target_path": "lib/native_sheet_reader.py"
+    },
+    {
+      "bytes": 58033,
+      "download_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/download/model-authoring-helpers-v1.1.0/output_lineage.py",
+      "filename": "output_lineage.py",
+      "name": "output_lineage",
+      "runtime_dependencies": [
+        "python>=3.11",
+        "pandas"
+      ],
+      "sha256": "a7e5bbb4eaff046b642e9c49b29e40ce530e85ab33869335d57e0ff2d503967e",
+      "source_url": "https://raw.githubusercontent.com/Bridge-Town/financial-modeling-mcp/model-authoring-helpers-v1.1.0/model-authoring-helpers/v1.1.0/output_lineage.py",
+      "target_path": "lib/output_lineage.py"
+    }
+  ],
+  "license": "MIT",
+  "owner": "Bridge Town Engineering",
+  "release": "v1.1.0",
+  "release_tag": "model-authoring-helpers-v1.1.0",
+  "repository": "https://github.com/Bridge-Town/financial-modeling-mcp",
+  "schema_version": 1
+}

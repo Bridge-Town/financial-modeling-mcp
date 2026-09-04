@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0.0",
+  "inventory_version": "1.1.0",
+  "resources": [
+    {
+      "resource_id": "connector-package",
+      "kind": "connector_package",
+      "title": "Bridge Town MCP connector package",
+      "version": "1.0.1",
+      "owner_id": "team/platform-engineering",
+      "link_state": "available",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "documentation",
+      "kind": "documentation",
+      "title": "Bridge Town product documentation",
+      "version": "1.1.0",
+      "owner_id": "team/developer-experience",
+      "link_state": "available",
+      "canonical_url": "https://www.bridgetown.builders/docs/",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "helper-source",
+      "kind": "helper_source",
+      "title": "Model authoring helpers",
+      "version": "1.1.0",
+      "owner_id": "team/developer-experience",
+      "link_state": "available",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "license",
+      "kind": "license",
+      "title": "MIT license",
+      "version": "1.0.0",
+      "owner_id": "team/legal",
+      "link_state": "available",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/blob/main/LICENSE",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "privacy",
+      "kind": "privacy",
+      "title": "Bridge Town privacy notice",
+      "version": "1.0.0",
+      "owner_id": "team/privacy",
+      "link_state": "available",
+      "canonical_url": "https://www.bridgetown.builders/privacy",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "release",
+      "kind": "release",
+      "title": "Public connector releases",
+      "version": "1.0.0",
+      "owner_id": "team/release-engineering",
+      "link_state": "available",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "security",
+      "kind": "security",
+      "title": "Bridge Town security and trust policy",
+      "version": "1.0.0",
+      "owner_id": "team/security",
+      "link_state": "available",
+      "canonical_url": "https://www.bridgetown.builders/security",
+      "missing_reason": null
+    },
+    {
+      "resource_id": "support",
+      "kind": "support",
+      "title": "Bridge Town support",
+      "version": "1.0.0",
+      "owner_id": "team/support",
+      "link_state": "available",
+      "canonical_url": "https://www.bridgetown.builders/contact",
+      "missing_reason": null
+    }
+  ]
+}
