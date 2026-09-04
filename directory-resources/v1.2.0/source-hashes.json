@@ -1,0 +1,14 @@
+{
+  "manifest_hash": "sha256:6bdc32fc54c5addddc8179e715bae048c6f4fe208fda89ed2993db15642baf7f",
+  "schema_version": "1.0.0",
+  "source_hashes": {
+    "mcp-directory/public-releases/financial-modeling-mcp/README.md": "sha256:e3c4a0d451e09abdc69c68504c2a76c652e1d74053f408134dbc5f6ac86a4f01",
+    "mcp-directory/public-releases/financial-modeling-mcp/docs/getting-started.md": "sha256:d1d3fe8dda68f12456757dba23dab29949a40b98b65bc592510a8eabc12f6a61",
+    "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/examples/native_sheet_reader_example.py": "sha256:a3436fa665351b276a052d5eb93d73df13f688fab65d846be78f210645e2596f",
+    "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/examples/output_lineage_example.py": "sha256:84655568b42a6d59cb105282ed7dfa004af429c622321687162acde9d7cb381d",
+    "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/native_sheet_reader.py": "sha256:824fa62413de6ceb804ceb15a437e51db6ab6d08b9d3e5c054fbcdb1de66a9ca",
+    "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/output_lineage.py": "sha256:a7e5bbb4eaff046b642e9c49b29e40ce530e85ab33869335d57e0ff2d503967e",
+    "mcp-directory/templates/v1/catalog.json": "sha256:305c0490f61aa6c7f65fdc70c718b710a5ea9b5f7620bfe5ce53465f6b5ed0ca",
+    "mcp-registry/server.json": "sha256:93fe0dea4e9ac2a2146042f647af011ae520dd7a836072fcc798e753bc8ae8c4"
+  }
+}

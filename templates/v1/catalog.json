@@ -1,4 +1,18 @@
 {
   "schema_version": 1,
-  "templates": []
+  "templates": [
+    {
+      "commit_sha": "ac3c840445a30ffe6278804ea15a9d5119ea6b35",
+      "description": "A deterministic three-year revenue forecast with the supported Native Sheet and output-lineage helpers.",
+      "documentation_url": "https://github.com/Bridge-Town/model-starter/blob/ac3c840445a30ffe6278804ea15a9d5119ea6b35/README.md",
+      "helpers": [
+        "native_sheet_reader",
+        "output_lineage"
+      ],
+      "id": "financial-model-starter",
+      "repository_url": "https://github.com/Bridge-Town/model-starter.git",
+      "title": "Bridge Town Financial Model Starter",
+      "version": "v1.0.0"
+    }
+  ]
 }

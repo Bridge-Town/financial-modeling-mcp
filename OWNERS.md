@@ -10,7 +10,8 @@ the listed owner.
 | `documentation` | `1.1.0` | `team/developer-experience` | <https://www.bridgetown.builders/docs/> |
 | `helper-source` | `1.1.0` | `team/developer-experience` | <https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0> |
 | `license` | `1.0.0` | `team/legal` | <https://github.com/Bridge-Town/financial-modeling-mcp/blob/main/LICENSE> |
+| `official-template` | `1.0.0` | `team/developer-experience` | <https://github.com/Bridge-Town/model-starter/releases/tag/v1.0.0> |
 | `privacy` | `1.0.0` | `team/privacy` | <https://www.bridgetown.builders/privacy> |
-| `release` | `1.0.0` | `team/release-engineering` | <https://github.com/Bridge-Town/financial-modeling-mcp/releases> |
+| `release` | `1.2.0` | `team/release-engineering` | <https://github.com/Bridge-Town/financial-modeling-mcp/releases> |
 | `security` | `1.0.0` | `team/security` | <https://www.bridgetown.builders/security> |
 | `support` | `1.0.0` | `team/support` | <https://www.bridgetown.builders/contact> |

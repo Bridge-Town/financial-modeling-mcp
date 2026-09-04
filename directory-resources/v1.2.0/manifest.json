@@ -1,0 +1,86 @@
+{
+  "artifacts": [
+    {
+      "artifact_id": "connector-package",
+      "artifact_kind": "connector_package",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp",
+      "content_hash": "sha256:93fe0dea4e9ac2a2146042f647af011ae520dd7a836072fcc798e753bc8ae8c4",
+      "license": "MIT",
+      "resource_id": "connector-package",
+      "source_path": "mcp-registry/server.json",
+      "version": "1.0.1"
+    },
+    {
+      "artifact_id": "documentation-getting-started",
+      "artifact_kind": "documentation",
+      "canonical_url": "https://www.bridgetown.builders/docs/",
+      "content_hash": "sha256:d1d3fe8dda68f12456757dba23dab29949a40b98b65bc592510a8eabc12f6a61",
+      "license": "MIT",
+      "resource_id": "documentation",
+      "source_path": "mcp-directory/public-releases/financial-modeling-mcp/docs/getting-started.md",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "documentation-readme",
+      "artifact_kind": "documentation",
+      "canonical_url": "https://www.bridgetown.builders/docs/",
+      "content_hash": "sha256:e3c4a0d451e09abdc69c68504c2a76c652e1d74053f408134dbc5f6ac86a4f01",
+      "license": "MIT",
+      "resource_id": "documentation",
+      "source_path": "mcp-directory/public-releases/financial-modeling-mcp/README.md",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "example-native-sheet-reader",
+      "artifact_kind": "example",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0",
+      "content_hash": "sha256:a3436fa665351b276a052d5eb93d73df13f688fab65d846be78f210645e2596f",
+      "license": "MIT",
+      "resource_id": "helper-source",
+      "source_path": "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/examples/native_sheet_reader_example.py",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "example-output-lineage",
+      "artifact_kind": "example",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0",
+      "content_hash": "sha256:84655568b42a6d59cb105282ed7dfa004af429c622321687162acde9d7cb381d",
+      "license": "MIT",
+      "resource_id": "helper-source",
+      "source_path": "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/examples/output_lineage_example.py",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "helper-native-sheet-reader",
+      "artifact_kind": "helper_source",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0",
+      "content_hash": "sha256:824fa62413de6ceb804ceb15a437e51db6ab6d08b9d3e5c054fbcdb1de66a9ca",
+      "license": "MIT",
+      "resource_id": "helper-source",
+      "source_path": "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/native_sheet_reader.py",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "helper-output-lineage",
+      "artifact_kind": "helper_source",
+      "canonical_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/tag/model-authoring-helpers-v1.1.0",
+      "content_hash": "sha256:a7e5bbb4eaff046b642e9c49b29e40ce530e85ab33869335d57e0ff2d503967e",
+      "license": "MIT",
+      "resource_id": "helper-source",
+      "source_path": "mcp-directory/public-releases/model-authoring-helpers/v1.1.0/output_lineage.py",
+      "version": "1.1.0"
+    },
+    {
+      "artifact_id": "template-catalog",
+      "artifact_kind": "template",
+      "canonical_url": "https://github.com/Bridge-Town/model-starter/releases/tag/v1.0.0",
+      "content_hash": "sha256:305c0490f61aa6c7f65fdc70c718b710a5ea9b5f7620bfe5ce53465f6b5ed0ca",
+      "license": "MIT",
+      "resource_id": "official-template",
+      "source_path": "mcp-directory/templates/v1/catalog.json",
+      "version": "1.0.0"
+    }
+  ],
+  "inventory_version": "1.2.0",
+  "schema_version": "1.0.0"
+}
