@@ -1,0 +1,66 @@
+{
+  "documentation": {
+    "bsheet_reader": "https://www.bridgetown.builders/docs/guides/native-sheet-model-inputs",
+    "native_sheet_reader": "https://www.bridgetown.builders/docs/guides/native-sheet-model-inputs",
+    "output_lineage": "https://www.bridgetown.builders/docs/guides/output-lineage-authoring"
+  },
+  "examples": [
+    {
+      "path": "examples/bsheet_reader_example.py",
+      "sha256": "800ce4e914ceb8be34e80e63c3253113fc78557053978c0803057646f1bc312f"
+    },
+    {
+      "path": "examples/native_sheet_reader_example.py",
+      "sha256": "a3436fa665351b276a052d5eb93d73df13f688fab65d846be78f210645e2596f"
+    },
+    {
+      "path": "examples/output_lineage_example.py",
+      "sha256": "3a8d7b13999cc803c2be52dff0606af2f2a3258e38de3e0a782fd24b55ecaa12"
+    }
+  ],
+  "helpers": [
+    {
+      "bytes": 22464,
+      "download_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/download/model-authoring-helpers-v1.5.0/bsheet_reader.py",
+      "filename": "bsheet_reader.py",
+      "name": "bsheet_reader",
+      "runtime_dependencies": [
+        "python>=3.11"
+      ],
+      "sha256": "c431799998019c63b7639aa09ba4d9e97a0461172664cce9655a0cea128f3e2b",
+      "source_url": "https://raw.githubusercontent.com/Bridge-Town/financial-modeling-mcp/model-authoring-helpers-v1.5.0/model-authoring-helpers/v1.5.0/bsheet_reader.py",
+      "target_path": "lib/bsheet_reader.py"
+    },
+    {
+      "bytes": 1824,
+      "download_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/download/model-authoring-helpers-v1.5.0/native_sheet_reader.py",
+      "filename": "native_sheet_reader.py",
+      "name": "native_sheet_reader",
+      "runtime_dependencies": [
+        "python>=3.11"
+      ],
+      "sha256": "d1151742f43d9de1252abd8ad343155cb690806ca528933b9c0f0af65bef16ce",
+      "source_url": "https://raw.githubusercontent.com/Bridge-Town/financial-modeling-mcp/model-authoring-helpers-v1.5.0/model-authoring-helpers/v1.5.0/native_sheet_reader.py",
+      "target_path": "lib/native_sheet_reader.py"
+    },
+    {
+      "bytes": 66766,
+      "download_url": "https://github.com/Bridge-Town/financial-modeling-mcp/releases/download/model-authoring-helpers-v1.5.0/output_lineage.py",
+      "filename": "output_lineage.py",
+      "name": "output_lineage",
+      "runtime_dependencies": [
+        "python>=3.11",
+        "pandas"
+      ],
+      "sha256": "f4ed48aec4d0a77bc87265147c8843fe3682cb823c9a26eb7dc2eaf7979c277d",
+      "source_url": "https://raw.githubusercontent.com/Bridge-Town/financial-modeling-mcp/model-authoring-helpers-v1.5.0/model-authoring-helpers/v1.5.0/output_lineage.py",
+      "target_path": "lib/output_lineage.py"
+    }
+  ],
+  "license": "MIT",
+  "owner": "Bridge Town Engineering",
+  "release": "v1.5.0",
+  "release_tag": "model-authoring-helpers-v1.5.0",
+  "repository": "https://github.com/Bridge-Town/financial-modeling-mcp",
+  "schema_version": 1
+}
